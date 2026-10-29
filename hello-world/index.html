@@ -26,7 +26,8 @@
       margin: 0;
       display: grid;
       place-items: center;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
       background:
         radial-gradient(ellipse at 50% 44%, rgba(102, 115, 196, .2), transparent 40%),
         radial-gradient(ellipse at 15% 85%, rgba(64, 190, 163, .11), transparent 38%),
@@ -117,6 +118,18 @@
       text-transform: uppercase;
     }
 
+    html { scroll-behavior: smooth; }
+    .scene { margin: 5.5rem auto 5rem; }
+    .contact-panel {
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,.12);
+      scroll-margin-top: 6rem;
+    }
+    .contact-panel h2 { margin: 0; font-size: clamp(2rem, 6vw, 3.5rem); letter-spacing: -.06em; }
+    .contact-panel p { max-width: 30rem; margin: 1rem auto 1.5rem; color: var(--muted); line-height: 1.7; }
+    .email-link { display: inline-flex; gap: .55rem; align-items: center; padding: .85rem 1.15rem; border-radius: 999px; color: #101522; background: linear-gradient(100deg, #a8f0d1, #9edaf4); text-decoration: none; font-weight: 700; }
+
     nav {
       position: fixed;
       z-index: 2;
@@ -139,23 +152,29 @@
     @keyframes twinkle { 0%, 100% { opacity: .35; transform: scale(.8) rotate(0); } 50% { opacity: 1; transform: scale(1.2) rotate(18deg); } }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
     }
   </style>
 </head>
 <body>
   <nav aria-label="Main navigation">
-    <a href="index.html" aria-current="page">Home</a>
-    <a href="contact.html">Contact</a>
+    <a href="#home" aria-current="page">Home</a>
+    <a href="#contact">Contact</a>
   </nav>
   <span class="sparkle one" aria-hidden="true">✦</span>
   <span class="sparkle two" aria-hidden="true">✧</span>
   <span class="sparkle three" aria-hidden="true">✦</span>
 
-  <main class="scene">
+  <main class="scene" id="home">
     <p class="eyebrow">A fresh beginning</p>
     <h1>Hello,<span>world!</span></h1>
     <p class="message">A tiny page, a brand-new start, and a little reminder that the web can still feel like magic.</p>
+    <section class="contact-panel" id="contact" aria-labelledby="contact-title">
+      <p class="eyebrow">Say hello</p>
+      <h2 id="contact-title">Let's talk.</h2>
+      <p>Have a question, an idea, or just want to say hi? Send a note — we'd love to hear from you.</p>
+      <a class="email-link" href="mailto:hello@example.com">✉ <span>Email us</span></a>
+    </section>
   </main>
 
   <footer class="footer">Made with a little bit of wonder</footer>
