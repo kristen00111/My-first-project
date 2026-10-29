@@ -117,6 +117,23 @@
       text-transform: uppercase;
     }
 
+    nav {
+      position: fixed;
+      z-index: 2;
+      top: 1.25rem;
+      left: 50%;
+      display: flex;
+      gap: .5rem;
+      padding: .35rem;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 999px;
+      background: rgba(16,21,34,.62);
+      backdrop-filter: blur(12px);
+      transform: translateX(-50%);
+    }
+    nav a { padding: .55rem .9rem; border-radius: 999px; color: var(--muted); text-decoration: none; font-size: .85rem; transition: color .2s, background .2s; }
+    nav a:hover, nav a[aria-current="page"] { color: #fff; background: rgba(255,255,255,.1); }
+
     @keyframes arrive { from { opacity: 0; transform: translateY(18px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
     @keyframes float { to { transform: translate3d(12px, -12px, 0) scale(1.08); } }
     @keyframes twinkle { 0%, 100% { opacity: .35; transform: scale(.8) rotate(0); } 50% { opacity: 1; transform: scale(1.2) rotate(18deg); } }
@@ -127,6 +144,10 @@
   </style>
 </head>
 <body>
+  <nav aria-label="Main navigation">
+    <a href="index.html" aria-current="page">Home</a>
+    <a href="contact.html">Contact</a>
+  </nav>
   <span class="sparkle one" aria-hidden="true">✦</span>
   <span class="sparkle two" aria-hidden="true">✧</span>
   <span class="sparkle three" aria-hidden="true">✦</span>
