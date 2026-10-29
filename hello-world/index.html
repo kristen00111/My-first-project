@@ -73,7 +73,7 @@
       letter-spacing: .18em;
       text-transform: uppercase;
     }
-    .eyebrow::before { content: "✦"; font-size: .95rem; }
+    .eyebrow::before { content: "✦"; content: "✦" / ""; font-size: .95rem; }
 
     h1 {
       margin: 0;
@@ -111,7 +111,7 @@
     .footer {
       position: fixed;
       inset: auto 1rem 1.25rem;
-      color: rgba(213,220,237,.48);
+      color: rgba(213,220,237,.72);
       text-align: center;
       font-size: .72rem;
       letter-spacing: .08em;
@@ -147,6 +147,28 @@
     nav a { padding: .55rem .9rem; border-radius: 999px; color: var(--muted); text-decoration: none; font-size: .85rem; transition: color .2s, background .2s; }
     nav a:hover, nav a[aria-current="page"] { color: #fff; background: rgba(255,255,255,.1); }
 
+    a:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+    .email-link:focus-visible { outline-color: #fff; }
+
+    .skip-link {
+      position: fixed;
+      z-index: 3;
+      top: 1rem;
+      left: 1rem;
+      padding: .7rem 1rem;
+      border-radius: .75rem;
+      color: #101522;
+      background: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+      transform: translateY(-200%);
+    }
+    .skip-link:focus { transform: none; }
+    main:focus { outline: none; }
+
     @keyframes arrive { from { opacity: 0; transform: translateY(18px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
     @keyframes float { to { transform: translate3d(12px, -12px, 0) scale(1.08); } }
     @keyframes twinkle { 0%, 100% { opacity: .35; transform: scale(.8) rotate(0); } 50% { opacity: 1; transform: scale(1.2) rotate(18deg); } }
@@ -157,6 +179,7 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#home">Skip to content</a>
   <nav aria-label="Main navigation">
     <a href="#home" aria-current="page">Home</a>
     <a href="#contact">Contact</a>
@@ -165,15 +188,15 @@
   <span class="sparkle two" aria-hidden="true">✧</span>
   <span class="sparkle three" aria-hidden="true">✦</span>
 
-  <main class="scene" id="home">
+  <main class="scene" id="home" tabindex="-1">
     <p class="eyebrow">A fresh beginning</p>
-    <h1>Hello,<span>world!</span></h1>
+    <h1>Hello, <span>world!</span></h1>
     <p class="message">A tiny page, a brand-new start, and a little reminder that the web can still feel like magic.</p>
     <section class="contact-panel" id="contact" aria-labelledby="contact-title">
       <p class="eyebrow">Say hello</p>
       <h2 id="contact-title">Let's talk.</h2>
       <p>Have a question, an idea, or just want to say hi? Send a note — we'd love to hear from you.</p>
-      <a class="email-link" href="mailto:hello@example.com">✉ <span>Email us</span></a>
+      <a class="email-link" href="mailto:hello@example.com"><span aria-hidden="true">✉</span> <span>Email us</span></a>
     </section>
   </main>
 
